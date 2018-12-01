@@ -5,5 +5,5 @@ services:
     image: shadowsocksr
     container_name: shadowsocksr_server
     ports:
-      - "50080:50080"
+      - "7999:7999"
     env_file: .env  
