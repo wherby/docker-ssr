@@ -12,10 +12,22 @@ RUN apk update && \
     apk --no-cache upgrade && \
     apk --no-cache add libsodium git python && \
     cd ~ && \
+
+RUN groupmod -g 1001 node \
+  && usermod -u 1001 -g 1001 node
+  
+RUN mkdir /test && \
+    chown -R 1001 /test && \
+    chgrp -R 0 /test && \
+    chmod -R g+w /test && \
     git clone -b manyuser https://github.com/shadowsocksr-backup/shadowsocksr.git
+
+
+
+
 
 USER 1001
 
 EXPOSE $SSR_SERVER_PORT
 
-CMD python /root/shadowsocksr/shadowsocks/server.py -p $SSR_SERVER_PORT -k $SSR_PASSWORD -m $SSR_METHOD -O $SSR_PROTOCOL -o $SSR_OBFS
+CMD python /test/shadowsocksr/shadowsocks/server.py -p $SSR_SERVER_PORT -k $SSR_PASSWORD -m $SSR_METHOD -O $SSR_PROTOCOL -o $SSR_OBFS
