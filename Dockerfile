@@ -11,7 +11,7 @@ ENV SSR_OBFS http_simple
 RUN apk update && \
     apk --no-cache upgrade && \
     apk --no-cache add libsodium git python && \
-    cd ~ && \
+    cd ~
 
 RUN groupmod -g 1001 node \
   && usermod -u 1001 -g 1001 node
