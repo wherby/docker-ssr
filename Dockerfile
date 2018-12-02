@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-LABEL maintainer="https://github.com/starriv"
+LABEL maintainer="https://github.com/wherby"
 
 ENV SSR_SERVER_PORT 7999
 ENV SSR_PASSWORD password
@@ -19,10 +19,10 @@ RUN mkdir /test && \
     chgrp -R 0 /test && \
     chmod -R g+w /test && \
     cd /test && \
-    git clone -b manyuser https://github.com/shadowsocksr-backup/shadowsocksr.git
+    git clone https://github.com/teddysun/shadowsocksr.git
 
 
-
+RUN /test/shadowsocksr/initcfg.sh
 
 
 USER 1001
