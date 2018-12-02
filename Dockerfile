@@ -13,8 +13,6 @@ RUN apk update && \
     apk --no-cache add libsodium git python && \
     cd ~
 
-RUN groupmod -g 1001 node \
-  && usermod -u 1001 -g 1001 node
   
 RUN mkdir /test && \
     chown -R 1001 /test && \
