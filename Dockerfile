@@ -20,6 +20,7 @@ RUN mkdir /test && \
     chown -R 1001 /test && \
     chgrp -R 0 /test && \
     chmod -R g+w /test && \
+    cd /test && \
     git clone -b manyuser https://github.com/shadowsocksr-backup/shadowsocksr.git
 
 
