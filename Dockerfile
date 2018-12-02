@@ -14,7 +14,7 @@ RUN apk update && \
     cd ~ && \
     git clone -b manyuser https://github.com/shadowsocksr-backup/shadowsocksr.git
 
-USER root
+USER 1001
 
 EXPOSE $SSR_SERVER_PORT
 
