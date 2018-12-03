@@ -30,8 +30,16 @@ RUN ls /usr/share/zoneinfo
 
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
+ADD start.sh /test/start.sh
+RUN chmod +x /test/start.sh
+
 USER 1001
 
 EXPOSE $SSR_SERVER_PORT
 
-CMD python /test/shadowsocksr/shadowsocks/server.py -p $SSR_SERVER_PORT -k $SSR_PASSWORD -m $SSR_METHOD -O $SSR_PROTOCOL -o $SSR_OBFS
+WORKDIR /test
+
+#ENTRYPOINT  /test/shadowsocksr/shadowsocks/server.py -p $SSR_SERVER_PORT -k $SSR_PASSWORD -m $SSR_METHOD -O $SSR_PROTOCOL -o $SSR_OBFS
+
+
+CMD /test/start.sh
