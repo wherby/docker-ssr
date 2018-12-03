@@ -22,8 +22,13 @@ RUN mkdir /test && \
     git clone https://github.com/teddysun/shadowsocksr.git
 
 
-RUN /test/shadowsocksr/initcfg.sh
+#RUN /test/shadowsocksr/initcfg.sh
 
+RUN apk add -U tzdata
+
+RUN ls /usr/share/zoneinfo
+
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 USER 1001
 
